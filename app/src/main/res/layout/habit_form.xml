@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".HabitForm">
+
+    <TextView
+            android:id="@+id/habit_edition_header"
+            android:textSize="24sp"
+            android:color="@color/black"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <EditText
+            android:id="@+id/name_edit"
+            android:hint="@string/name_edit_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:inputType="text"
+            android:autofillHints="Привычка"/>
+
+    <EditText
+            android:id="@+id/description_edit"
+            android:hint="@string/description_edit_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:autofillHints="Описание привычки"
+            android:inputType="text"/>
+
+    <TextView
+            android:labelFor="@+id/priority_spinner"
+            android:text="@string/priority_label"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <Spinner
+            android:id="@+id/priority_spinner"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/radio_group"
+            android:text="@string/habit_type_label"
+            android:layout_marginBottom="5dp"/>
+
+    <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <RadioButton android:id="@+id/radio_useful"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/useful_habit"
+                     android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/radio_harmful"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/harmful_habit"
+                     android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
+
+    <TextView
+            android:labelFor="@+id/periodicity_group"
+            android:text="@string/periodicity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"/>
+
+    <RelativeLayout
+            android:id="@+id/periodicity_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp">
+
+        <EditText
+                android:inputType="number"
+                android:id="@+id/times_count_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/count"
+                android:autofillHints="1"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/times_count_edit"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:paddingStart="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/count_hint"/>
+
+        <TextView
+                android:id="@+id/pretext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/times_count_edit"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:paddingLeft="5dp"
+                android:text="@string/pretext"/>
+
+        <EditText
+                android:inputType="text"
+                android:id="@+id/time_period_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/time_period_hint"
+                android:layout_below="@+id/pretext"
+                android:autofillHints="неделю" />
+    </RelativeLayout>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_button_text"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
+            android:background="@color/purple_500"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:onClick="createHabit"/>
+</LinearLayout>

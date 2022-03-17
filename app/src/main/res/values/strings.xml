@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Трекер привычек</string>
+    <string name="name_edit_hint">Название</string>
+    <string name="description_edit_hint">Описание</string>
+    <string name="useful_habit">Полезная (привить)</string>
+    <string name="harmful_habit">Вредная (искоренить)</string>
+    <string name="habit_type_label">Тип привычки</string>
+    <string name="priority_label">Приоритет</string>
+    <string name="periodicity_label">Необходимая/допустимая периодичность</string>
+    <string name="count">Кол-во</string>
+    <string name="time_period_hint">промежуток времени</string>
+    <string name="pretext">в</string>
+    <string name="save_button_text">Сохранить</string>
+    <string name="count_hint">раз</string>
+    <string-array name="priority_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+</resources>
