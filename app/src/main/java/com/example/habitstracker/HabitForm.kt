@@ -53,6 +53,7 @@ class HabitForm : Activity() {
             findViewById<EditText>(R.id.time_period_edit).setText(period?.elementAt(3))
             val radioGroup = findViewById<RadioGroup>(R.id.radio_group)
             val typeId = if (habit.type == "Полезная") R.id.radio_useful else R.id.radio_harmful
+            type = habit.type!!
             radioGroup.check(typeId)
         } else {
             findViewById<TextView>(R.id.habit_edition_header).text = "Создание привычки"
@@ -86,7 +87,7 @@ class HabitForm : Activity() {
 
         var description = findViewById<EditText>(R.id.description_edit).text.toString()
         if (description == "") {
-            description = "Обычная привычка"
+            description = "—"
         }
 
         var timesCount = findViewById<EditText>(R.id.times_count_edit).text.toString()
