@@ -3,14 +3,14 @@ package com.example.habitstracker
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-
 import android.view.View
-import android.widget.*
+import android.widget.EditText
+import android.widget.RadioGroup
+import android.widget.Spinner
+import android.widget.TextView
 
 
 class HabitForm : Activity() {
-    private var priority: Int = 1
-    private var type: String = "Полезная"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,26 +20,6 @@ class HabitForm : Activity() {
         val mode = message.toString()
 
         val spinner: Spinner = findViewById(R.id.priority_spinner)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.priority_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                itemSelected: View?, selectedItemPosition: Int, selectedId: Long
-            ) {
-                val choose = resources.getStringArray(R.array.priority_array)
-                priority = choose[selectedItemPosition].toInt()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
 
         if (mode == "edit") {
             val habit = AppHabits.getEditingHabit()
@@ -53,27 +33,9 @@ class HabitForm : Activity() {
             findViewById<EditText>(R.id.time_period_edit).setText(period?.elementAt(3))
             val radioGroup = findViewById<RadioGroup>(R.id.radio_group)
             val typeId = if (habit.type == "Полезная") R.id.radio_useful else R.id.radio_harmful
-            type = habit.type!!
             radioGroup.check(typeId)
         } else {
             findViewById<TextView>(R.id.habit_edition_header).text = "Создание привычки"
-        }
-    }
-
-    fun onRadioButtonClicked(view: View) {
-        if (view is RadioButton) {
-            val checked = view.isChecked
-
-            when (view.getId()) {
-                R.id.radio_useful ->
-                    if (checked) {
-                        type = "Полезная"
-                    }
-                R.id.radio_harmful ->
-                    if (checked) {
-                        type = "Вредная"
-                    }
-            }
         }
     }
 
@@ -99,6 +61,10 @@ class HabitForm : Activity() {
         if (timePeriod == "") {
             timePeriod = "месяц"
         }
+
+        val priority = findViewById<Spinner>(R.id.priority_spinner).selectedItem.toString().toInt()
+        val typeId = findViewById<RadioGroup>(R.id.radio_group).checkedRadioButtonId
+        val type = if (typeId == R.id.radio_harmful) "Вредная" else "Полезная"
 
         val period = "$timesCount в $timePeriod"
         val newHabit = Habit(name, description, priority, period, type)

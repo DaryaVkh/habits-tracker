@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"/>
 
     <Spinner
+            android:entries="@array/priority_array"
             android:id="@+id/priority_spinner"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -63,13 +64,11 @@
         <RadioButton android:id="@+id/radio_useful"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="@string/useful_habit"
-                     android:onClick="onRadioButtonClicked"/>
+                     android:text="@string/useful_habit"/>
         <RadioButton android:id="@+id/radio_harmful"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="@string/harmful_habit"
-                     android:onClick="onRadioButtonClicked"/>
+                     android:text="@string/harmful_habit"/>
     </RadioGroup>
 
     <TextView
